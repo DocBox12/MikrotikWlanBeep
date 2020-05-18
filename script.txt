@@ -1,0 +1,33 @@
+# Author: DocBox
+# Github: https://github.com/DocBox12
+# Version: 1.0
+:local cont 0
+:while ($cont < 4)  do={ 
+    /interface wireless monitor <wlan_interface> interval=1 do={
+        :if ($"signal-strength" <= -80 && $"signal-strength" > -90) do={
+            :for i from=1 to=2 do={
+                :beep frequency=200 length=1000ms;
+            }
+        }
+        :if ($"signal-strength" <= -70 && $"signal-strength" > -80) do={
+            :for i from=1 to=2 do={
+                :beep frequency=400 length=700ms;
+            }
+        }
+        :if ($"signal-strength" <= -60 && $"signal-strength" > -70) do={
+            :for i from=1 to=2 do={
+                :beep frequency=600 length=500ms;
+            }
+        }
+        :if ($"signal-strength" <= -50 && $"signal-strength" > -60) do={
+            :for i from=1 to=2 do={
+                :beep frequency=800 length=300ms;
+            }
+    }
+        :if ($"signal-strength" <= -10  $"signal-strength" > -50) do={
+            :for i from=1 to=2 do={
+                :beep frequency=1000 length=100ms;
+            }
+        }
+    }
+}
